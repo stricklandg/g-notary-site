@@ -1,0 +1,534 @@
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../node_modules/font-awesome/scss/font-awesome.scss";
+@import "./datepicker.scss";
+@import "./select/default.scss";
+
+.logo-on {
+  top: -15px;
+  height: auto!important;
+  width: 25%;
+}
+
+.icon-user {
+  @extend .fa;
+  @extend .fa-user;
+}
+
+.form-spacer {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.line-separator{
+
+  height:5px;
+
+  background:#717171;
+
+  border-bottom:1px solid #313030;
+
+}
+
+.m-signature-pad {
+  position: relative;
+  font-size: 10px;
+  width: 700px;
+  height: 250px;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: -200px;
+  border: 1px solid #e8e8e8;
+  background-image: url("../images/lined_paper.png");
+  border-radius: 4px;
+}
+
+.m-signature-pad:before, .m-signature-pad:after {
+  position: relative;
+  z-index: -1;
+  content: "";
+  width: 40%;
+  height: 10px;
+  left: 20px;
+  bottom: 10px;
+  background: transparent;
+  -webkit-transform: skew(-3deg) rotate(-3deg);
+  -moz-transform: skew(-3deg) rotate(-3deg);
+  -ms-transform: skew(-3deg) rotate(-3deg);
+  -o-transform: skew(-3deg) rotate(-3deg);
+  transform: skew(-3deg) rotate(-3deg);
+  /*box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);*/
+}
+
+.m-signature-pad:after {
+  left: auto;
+  right: 20px;
+  -webkit-transform: skew(3deg) rotate(3deg);
+  -moz-transform: skew(3deg) rotate(3deg);
+  -ms-transform: skew(3deg) rotate(3deg);
+  -o-transform: skew(3deg) rotate(3deg);
+  transform: skew(3deg) rotate(3deg);
+}
+
+.m-signature-pad--body {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 20px;
+  bottom: 60px;
+  border: 1px solid #808080;
+}
+
+.m-signature-pad--body
+canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  /*  box-shadow: 0 0 5px rgba(0, 0, 0, 0.02) inset;*/
+}
+
+.m-signature-pad--footer {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  height: 40px;
+}
+
+.m-signature-pad--footer
+.description {
+  color: #C3C3C3;
+  text-align: center;
+  font-size: 1.2em;
+  margin-top: 1.8em;
+}
+
+.m-signature-pad--footer
+.button {
+  position: absolute;
+  bottom: 0;
+}
+
+.m-signature-pad--footer
+.button.clear {
+  left: 0;
+}
+
+.m-signature-pad--footer
+.button.save {
+  right: 0;
+}
+
+@media screen and (min-device-width: 1024px) {
+  .m-signature-pad {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: 225px;
+    min-width: 250px;
+    min-height: 140px;
+    margin: 5%;
+  }
+  #github {
+    display: none;
+  }
+}
+
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .m-signature-pad {
+    margin: 10%;
+    height:auto;
+    min-height: 140px!important;
+  }
+}
+
+@media screen and (max-height: 320px) {
+  .m-signature-pad {
+    height:auto;
+    min-height: 100px!important;
+  }
+  .m-signature-pad--body {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 32px;
+  }
+  .m-signature-pad--footer {
+    left: 20px;
+    right: 20px;
+    bottom: 4px;
+    height: 28px;
+  }
+  .m-signature-pad--footer
+  .description {
+    font-size: 1em;
+    margin-top: 1em;
+  }
+
+}
+
+
+
+
+
+
+.button-offset {
+  height: 600px;
+  width: 375px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.image-offset {
+  width: 375px;
+  height: auto;
+}
+
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+}
+
+.jumbotron {
+  margin-top: -75px;
+  margin-bottom: -75px;
+  height: 100%;
+  //background-image: url("images/background.png");
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
+.jumbotron-button {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.paddtron {
+  height: 100vh;
+  padding: 30px 30px 30px 30px;
+  position: relative;
+}
+
+.contains-it-all {
+  min-width: 400px;
+}
+
+.btn-holder {
+  position: absolute;
+  bottom: 60px;
+  right: 60px;
+
+}
+
+
+@media only screen and (min-width: 992px) {
+  .jumbotron {
+    background-size: 120% !important;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .jumbotron {
+    background-size: 160% !important;
+  }
+  .button-offset {
+    width: 350px;
+  }
+  .image-offset {
+    width: 350px;
+    height: auto;
+  }
+}
+
+
+@media only screen and (max-width: 820px) {
+  .button-offset {
+    margin-left: -10px;
+  }
+
+  .logo-on {
+    top: -10px;
+    height: auto!important;
+    width: 30%;
+  }
+
+}
+
+@media only screen and (max-width: 800px) {
+  .button-offset {
+    margin-left: -22px;
+  }
+}
+
+@media only screen and (max-width: 790px) {
+  .button-offset {
+    margin-left: -33px;
+  }
+}
+
+
+@media only screen and (max-width: 778px) {
+  .button-offset {
+    margin-left: -42px;
+  }
+}
+
+
+
+@media only screen and (max-width: 767px) {
+  .paddtron {
+    height: 100vh;
+    padding: 0px 0px 0px 0px !important;
+  }
+  .btn-holder {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+  }
+  .jumbotron {
+    background-size: 175% !important;
+    padding: 0px 0px 0px 0px !important;
+    margin-bottom: 0px!important;
+    margin-top: -72px!important;
+  }
+  .navbar-collapse.in {
+    padding-bottom: 46px;
+  }
+  .jumbotron-body-wrapper {
+    position: relative;
+    top: 85px;
+  }
+}
+
+@media only screen and (max-width: 766px) {
+  .jumbotron {
+    background-size: 240% !important;
+  }
+  .logo-on {
+    top: 0px;
+    height: auto!important;
+    width: 40%;
+  }
+
+}
+
+@media only screen and (max-width: 625px) {
+  .logo-on {
+    top: 0px;
+    height: auto!important;
+    width: 40%;
+  }
+
+}
+
+
+@media only screen and (max-width: 450px) {
+  .logo-on {
+    top: 0px;
+    height: auto!important;
+    width: 50%;
+  }
+
+  .jumbotron {
+    background-size: 300%!important;
+  }
+  .btn-holder {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+
+  }
+}
+
+@media only screen and (min-height: 580px) and (max-width: 520px) {
+  .jumbotron {
+    background-size: 310%!important;
+  }
+}
+
+
+
+
+.navbar {
+  background: transparent;
+  border-color: transparent;
+}
+
+.navbar-a {
+  color: grey;
+}
+
+.navbar-toggle {
+  border-color: grey!important;
+}
+
+
+.icon-bar {
+  background-color: grey;
+}
+
+.CreditCard {
+  max-width: 400px;
+
+  .credit-card-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+
+    li {
+      float: left;
+      color: #aaa;
+      font-size: 26px;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+
+    .active {
+      color: #666;
+    }
+  }
+
+  .alert {
+    margin-top: 20px;
+
+    h5 {
+      margin-top: 0px;
+    }
+
+    .exp-cvc {
+      margin-bottom: 5px;
+      span:first-child { margin-right: 15px; }
+    }
+  }
+}
+
+.btn-invisible {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+  }
+
+.cart-price {
+  position: relative;
+  float: right;
+  top: 8px;
+  right: 4px;
+}
+
+.left {
+  z-index: 3;
+}
+
+.right{
+  position: relative;
+  z-index: 1;
+}
+
+
+.jumbotron {
+  z-index: 3;
+  min-height: 400px;
+}
+.center-block {
+  margin-left:auto;
+  margin-right:auto;
+  display:center;
+  text-align: center;
+}
+
+.hold-me {
+  width: 100%;
+}
+
+.right-side {
+  margin-right: 0%;
+}
+
+.container {
+  width: 100%;
+}
+
+.clear-center-button {
+  white-space: normal;
+  position: inherit;
+  margin: 0;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  height: auto;
+  padding: 0;
+
+}
+
+.height-override {
+  .jumbotron {
+    min-height: 125px !important;
+    background-color: transparent;
+  }
+}
+
+.text-indent {
+  text-indent: 20px;
+}
+
+.text-indent-2 {
+  text-indent: 30px;
+}
+
+.logo-style {
+  height: auto!important;
+  width: 25%!important;
+}
+
+
+//Jumbo banner
+.body {
+  background-color: white;
+}
+
+.banner {
+  position: relative;
+  display: block;
+  margin: 25px 0px 25px 0px;
+  width: 100%;
+  min-height: 30px;
+  font: normal 23px/43px 'Georgia';
+  text-align: center;
+  color: #ffffff;
+  background: #0053A0;
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0,0,0,.15) inset,
+  0 6px 10px rgba(0,0,0,.15);
+}
+
+.jumbotron-header {
+  color: #F5964F;
+  margin: 25px 0px 55px 0px;
+}
+
+.jumbotron-lower-text {
+  h3 {
+    line-height: 35px;
+  }
+  margin: 50px 0px 0px 0px;
+}
+
+.jumbotron-footer-text {
+    p {
+      font-size: 12px !important;
+      color: grey;
+    }
+  margin: 50px 0px 0px 0px;
+}
