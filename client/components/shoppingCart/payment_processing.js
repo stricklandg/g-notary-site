@@ -66,7 +66,13 @@ class CreditCardForm extends React.Component {
                     exp_month = exp_month + "";
                     exp_month = "0" + exp_month;
                 }
-                const exp_year = parseInt(expiration[1], 10);
+                var exp_year = parseInt(expiration[1], 10);
+
+                if (`${exp_year}`.length > 2) {
+                    var shortenedYear = `${exp_year}`.slice(2,5);
+                    exp_year = shortenedYear;
+                }
+
                 const cvc = refs.cvc.value;
                 const card = {number, exp_month, exp_year, cvc};
 
@@ -266,25 +272,28 @@ class CreditCardForm extends React.Component {
     render() {
         const {ccError, checkoutItems, administrator} = this.props;
         const {noAddressField} = this.state;
-        return (<div className="CreditCard">
-            {_.isEmpty(checkoutItems) ? browserHistory.push("/cart") : ''}
+        return (
+            <div>
             {this.renderShippingForm()}
-            <div className="form-spacer"></div>
-            {administrator == true ? <div>
-                {this.renderCardList()}
-                {this.renderCardForm()}
-                {this.renderCheckForm()}
-            </div> : <div>
-                {this.renderCardList()}
-                {this.renderCardForm()}
-            </div>}
-            {ccError.error == true ? (<Alert bsStyle="warning">
-                <h5>An error occurred with your credit card payment, please retype your information and try again</h5>
-            </Alert>) : <div></div>}
-            {noAddressField == true ? (<Alert bsStyle="warning">
-                <h5>Please type in a your name, phone number and shipping address before pressing pay</h5>
-            </Alert>) : <div></div>}
-        </div>);
+                <div className="CreditCard">
+                    {_.isEmpty(checkoutItems) ? browserHistory.push("/cart") : ''}
+                    <div className="form-spacer"></div>
+                    {administrator == true ? <div>
+                        {this.renderCardList()}
+                        {this.renderCardForm()}
+                        {this.renderCheckForm()}
+                    </div> : <div>
+                        {this.renderCardList()}
+                        {this.renderCardForm()}
+                    </div>}
+                    {ccError.error == true ? (<Alert bsStyle="warning">
+                        <h5>An error occurred with your credit card payment, please retype your information and try again</h5>
+                    </Alert>) : <div></div>}
+                    {noAddressField == true ? (<Alert bsStyle="warning">
+                        <h5>Please type in a your name, phone number and shipping address before pressing pay</h5>
+                    </Alert>) : <div></div>}
+                </div>
+            </div>);
     }
 }
 

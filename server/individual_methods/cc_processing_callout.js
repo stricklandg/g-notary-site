@@ -15,9 +15,7 @@ export default function chargeCC(data, dataTwo, callback) {
     var ccExYea = data.data.exp_year;
     var cvc = data.data.cvc;
 
-    var ccExYString = ccExYea.toString();
-    var shortenedYear = ccExYString.slice(2,5);
-    var expirationString = `${ccExMon}${parseInt(shortenedYear)}`;
+    var expirationString = `${ccExMon}${parseInt(ccExYea)}`;
 
     var merchantAuthenticationType = new ApiContracts.MerchantAuthenticationType();
     merchantAuthenticationType.setName(Meteor.settings.private.AUTHORIZE_KEY);

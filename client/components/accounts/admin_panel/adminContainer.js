@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 }
 
 let mapStateSubscriptionsToProps = (props) => {
-    params = {'time.ourtime': {$gte: new Date(props.dateSort.dateStart), $lte: new Date(props.dateSort.dateEnd)}};
+    params = {"find": {'time.ourtime': {$gte: new Date(props.dateSort.dateStart), $lte: new Date(props.dateSort.dateEnd)}}, "sort": {sort: {'time.ourtime': 1}}};
     return {
         'orders': [params]
     }

@@ -20,7 +20,7 @@ export default class CartProduct extends Component {
                                      <div className="pull-right">
                                          <button className="btn-invisible" onClick={() => removeFromCart(unq_id, addInfo, quantity)}>
                                             <span className="badge">
-                                                <span className="glyphicon glyphicon-remove" aria-hidden="delete"></span>
+                                                x
                                             </span>
                                         </button>
                                      </div>

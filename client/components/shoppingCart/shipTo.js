@@ -57,69 +57,36 @@ const validate = values => {
     return errors
 };
 
-const addArrayForum = (addSearch, changer, dispatcher, clearList) => {
-    addArray = _.values(addSearch);
-    var fieldArray = ['street', 'city', 'state', 'zip'];
-    return addArray.map(values => {
-            //Refactor soon
-            var termGroup = _.cloneDeep(values.terms);
-            var valueOne = termGroup[0].value;
-            var valueTwo = termGroup[1].value;
-            var stringCombo = valueOne + " " + valueTwo;
-            termGroup[0] = {value: stringCombo};
-            termGroup.splice(1, 1);
-            termGroup.splice(3, 1);
-            values.terms = termGroup;
-            return <ListGroupItem key={values.id} onClick={() => { values.terms.forEach((value, index) => dispatcher(changer(fieldArray[index], value.value))); dispatcher(change('orderaddsearch', 'addsearch', values.description)); clearList(); }}>{values.description}</ListGroupItem>
-        }
-    )
-}
 
 const ShippingForm = (props) => {
-    const { handleSubmit, addSearch, change, dispatch, clearAddressList} = props;
+    const { handleSubmit} = props;
     return (
         <Form onSubmit={handleSubmit}>
 
+            <Col sm={6} md={6} lg={6}>
             <FormGroup>
-            <Col sm={2} md={2}>
-                <div className="form-spacer">
+            <Col sm={12} md={12}>
                     <label>Name</label>
-                </div>
             </Col>
-            <Col sm={10} md={10}>
-                <div className="form-spacer">
+            <Col sm={12} md={12}>
                     <Field name="name" className="form-control" type="text" component={renderInput} placeholder="Name on Order"/>
-                </div>
             </Col>
 
             </FormGroup>
             <div className="form-spacer"/>
 
             <FormGroup>
-                <Col sm={2} md={2}>
-                    <div className="form-spacer">
+                <Col sm={12} md={12}>
                         <label>Telephone</label>
-                    </div>
                 </Col>
-                <Col sm={10} md={10}>
-                    <div className="form-spacer">
+                <Col sm={12} md={12}>
                         <Field name="telephone" className="form-control" type="text" component={renderInput} placeholder="(xxx)-xxx-xxxx" normalize={normalizePhone}/>
-                    </div>
                 </Col>
             </FormGroup>
             <div className="form-spacer"/>
+            </Col>
 
-
-            <FormGroup>
-                <AddSearchForm/>
-                {_.isEmpty(addSearch) ? <div></div> :
-                    <FormGroup>
-                        <Col sm={10} smOffset={2} md={10} mdOffset={2}>
-                            <ListGroup>{addArrayForum(addSearch, change, dispatch, clearAddressList)}</ListGroup>
-                        </Col>
-                    </FormGroup>}
-            </FormGroup>
-
+            <Col sm={6} md={6} lg={6}>
             <FormGroup>
                 <Col sm={12} md={12}>
                     <label>Shipping Address</label>
@@ -151,6 +118,7 @@ const ShippingForm = (props) => {
 
             </FormGroup>
             <div className="form-spacer"/>
+            </Col>
 
 
         </Form>
