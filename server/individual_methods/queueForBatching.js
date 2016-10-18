@@ -101,6 +101,7 @@ export default function filesForBatching(Collection) {
                             formResize.quality(59, function(err3, qualityAd) {
                                 if (err3) {console.log(err3)}
                                 qualityAd.getBase64(Jimp.MIME_JPEG, function(err4, base64) {
+                                    if (err4) {console.log(err4)}
                                     base64ForApp = base64
                                 });
                             })
@@ -113,8 +114,8 @@ export default function filesForBatching(Collection) {
                             composition.print(resultFont, 425, 485, `${appId.bondNumber}`);
                             composition.quality(59, function(err3, qualityAd) {
                                 qualityAd.getBase64(Jimp.MIME_JPEG, function(err4, base64) {
+                                    if (err4) {console.log(err4)}
                                     base64ForApp = base64
-                                    console.log("Got to the image");
                                 });
                             })
 
@@ -157,7 +158,7 @@ export default function filesForBatching(Collection) {
                     "ApplicationImage": removedHeader
                 };
                 console.log(arrayObject);
-                return arrayObject;
+                return arrayObject
             }
         });
 
@@ -194,9 +195,7 @@ export default function filesForBatching(Collection) {
                 }
             },
             "objNotaryData": {
-                "NotaryApplications": {
-
-                }
+                "NotaryApplications": {}
             }
 
         };
