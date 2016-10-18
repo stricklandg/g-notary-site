@@ -8,6 +8,7 @@ import Orders from '../lib/collections/orders';
 import OrderNumber from '../lib/collections/ordernumbers';
 import TemporaryBonds from '../lib/collections/temporarybonds';
 import FutureTasks from '../lib/collections/futuretasks';
+import TempFutureTasks from '../lib/collections/tempfuturetasks';
 import imageBlob from './individual_methods/imageApplication';
 import filesForBatching from './individual_methods/queueForBatching';
 import scheduleCron from './individual_methods/addCron';
@@ -74,14 +75,24 @@ Meteor.methods ({
         async function writeToTempDB() {
             var asyncResp = null;
             let userId = Meteor.userId();
+            var middlename = "";
+            if (_.hasIn(data, "middleName")) {
+                middlename = data.middleName;
+            }
+
+            var email = "";
+            if (_.hasIn(data, "email")) {
+                email = data.email;
+            }
+
             try {
                 if (userId) {
-                    asyncResp = TemporaryBonds.insert({"identity": userId, "firstname": data.firstName, "lastname": data.lastName, "email": data.email,
+                    asyncResp = TemporaryBonds.insert({"identity": userId, "firstname": data.firstName, "middlename": middlename, "lastname": data.lastName, "email": email,
                         "telephone": data.telephone, "street": data.street, "street2": data.street2, "city": data.city, "state": data.state, "county": data.county,
                         "zip": data.zip, "driverlicense": data.driverlicense, "issuingstate": data.issuingstate, "birthdate": data.birthday,
                         "ss": data.socialsecurity, "isrenewal": data.isRenewal, "guiltyOfCrime": data.guiltyOfCrime, "image": image, "id":data.id, "resident": data.texasResidency, "uploadedForm": data.uploadForm})
                 } else {
-                    asyncResp = TemporaryBonds.insert({"identity": sessionId, "firstname": data.firstName, "lastname": data.lastName, "email": data.email,
+                    asyncResp = TemporaryBonds.insert({"identity": sessionId, "firstname": data.firstName, "middlename": middlename, "lastname": data.lastName, "email": data.email,
                         "telephone": data.telephone, "street": data.street, "street2": data.street2, "city": data.city, "state": data.state, "county": data.county,
                         "zip": data.zip, "driverlicense": data.driverlicense, "issuingstate": data.issuingstate, "birthdate": data.birthday,
                         "ss": data.socialsecurity, "isrenewal": data.isRenewal, "guiltyOfCrime": data.guiltyOfCrime, "id":data.id, "resident": data.texasResidency, "uploadedForm": data.uploadForm})
@@ -289,7 +300,7 @@ Meteor.methods ({
                 to: user.emails[0].address,
                 from: "store@txnotaryapplication.com",
                 subject: `Texas Notary App - Order Confirmation - ${recordValue}`,
-                html: `<p>Dear ${data.address.values.name}, <br><br> Thank you for your purchase today.  We are glad we were able to be of service. Your invoice/receipt can be found on txnotaryapplication.com.  <br> For your records, your total purchase was - <strong>$ ${data.cc.total}</strong> and your credit card ending in ${data.cc.data.number.slice(14,19)} was charged.  Also for your records, here is your order confirmation number: <strong>${recordValue}</strong>. <br><br><br> If you have any questions, please call - 800-622-8575 or email us at notary@iiubonds.com.  Please note that all bonds are underwritten through Insurors Indemnity Underwriters (dba Insurors Indemnity Company).<br><br><br> Note: Your order could take an extended period of time to process depending on the Texas Secretary of State.</p>`
+                html: `<p>Dear ${data.address.values.name}, <br><br> Thank you for your purchase today.  We are glad we were able to be of service. Your invoice/receipt can be found on txnotaryapplication.com.  <br> For your records, your total purchase was - <strong>$ ${data.cc.total}</strong> and your credit card ending in ${data.cc.data.number.slice(14,19)} was charged.  Also for your records, here is your order confirmation number: <strong>${recordValue}</strong>. <br><br><br> If you have any questions, please call - 800-933-7444 or email us at notary@iiubonds.com.  Please note that all bonds are underwritten through Insurors Indemnity Underwriters (dba Insurors Indemnity Company).<br><br><br> Note: Your order could take an extended period of time to process depending on the Texas Secretary of State.</p>`
             })
     },
     writeImageToDB: function(data) {
@@ -368,6 +379,14 @@ Meteor.methods ({
 
 
 
+    },
+    deleteFutureAddTempFuture: function() {
+        FutureTasks.find({}).forEach(value => {
+
+            TempFutureTasks.insert({value});
+
+        });
+        FutureTasks.remove({});
     }
 
 

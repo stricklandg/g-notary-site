@@ -11,7 +11,6 @@ import TemporaryBonds from '../lib/collections/temporarybonds';
 import Packages from '../lib/collections/packages';
 
 Meteor.publish('orders', function(options) {
-    console.log(options);
     var currentUserId = this.userId;
 
     isAdmin = function(currentUserId){

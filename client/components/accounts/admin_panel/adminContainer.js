@@ -9,7 +9,6 @@ import stopDBTracker from '../../../events/actions/stop_db_tracker';
 import Orders from '../../../../lib/collections/orders';
 import {Glyphicon} from 'react-bootstrap';
 import {Link} from 'react-router';
-import OverallStats from './overallStats';
 import AdminOrderListContainer from './adminOrderList';
 import _ from 'lodash';
 
@@ -52,7 +51,7 @@ function mapStateToProps(state) {
 }
 
 let mapStateSubscriptionsToProps = (props) => {
-    params = {"find": {'time.ourtime': {$gte: new Date(props.dateSort.dateStart), $lte: new Date(props.dateSort.dateEnd)}}, "sort": {sort: {'time.ourtime': 1}}};
+    params = {"find": {'time.ourtime': {$gte: new Date(props.dateSort.dateStart), $lte: new Date(props.dateSort.dateEnd)}}, "sort": {sort: {'time.ourtime': -1}}};
     return {
         'orders': [params]
     }

@@ -6,6 +6,7 @@ import BatchId from '../../lib/collections/sosbatchid';
 import BondNumber from '../../lib/collections/bondnumber';
 import signature from '../images/signature';
 import { Meteor } from 'meteor/meteor';
+import _ from 'lodash';
 var Promise = require("bluebird");
 
 
@@ -34,12 +35,12 @@ export default function filesForBatching(Collection) {
         var recordArray = Collection.find({}).map(record => {return record});
 
         var arrayHolder = recordArray.map(record => {
-            console.log(record.bond);
+
             var bond = record.bond;
             var d = new Date(bond.birthdate);
             var dFormatted = d.toJSON().slice(0,19);
-            var crimeStatus = bond.guiltyOfCrime;
 
+            var crimeStatus = bond.guiltyOfCrime;
             if (crimeStatus == "notguilty") {
                 crimeStatus = "N"
             } else {
@@ -63,6 +64,11 @@ export default function filesForBatching(Collection) {
                 resident = "Y"
             } else {
                 resident = "N"
+            }
+
+            var middlename = "";
+            if ( _.hasIn(bond, "middlename")) {
+                middlename = bond.middlename;
             }
 
             let order = Orders.findOne({"transId": record.transId});
@@ -108,6 +114,7 @@ export default function filesForBatching(Collection) {
                             composition.quality(59, function(err3, qualityAd) {
                                 qualityAd.getBase64(Jimp.MIME_JPEG, function(err4, base64) {
                                     base64ForApp = base64
+                                    console.log("Got to the image");
                                 });
                             })
 
@@ -127,10 +134,10 @@ export default function filesForBatching(Collection) {
                 }
                 BondNumber.update({}, {$inc: {bondNumber: 1}});
                 Orders.update({"_id": order._id}, {$push: {'sosApps': removedHeader}});
-                return arrayObject = {
+                var arrayObject = {
                     "ApplicationID": appId.bondNumber,
                     "FirstName": bond.firstname,
-                    "MiddleName": "",
+                    "MiddleName": middlename,
                     "LastName": bond.lastname,
                     "NameSuffix": "",
                     "DateOfBirth": dFormatted,
@@ -148,7 +155,9 @@ export default function filesForBatching(Collection) {
                     "TexasResidentIndicator": resident,
                     "FelonyConvictionIndicator": crimeStatus,
                     "ApplicationImage": removedHeader
-                }
+                };
+                console.log(arrayObject);
+                return arrayObject;
             }
         });
 
@@ -194,7 +203,6 @@ export default function filesForBatching(Collection) {
 
         clientObject.objNotaryData.NotaryApplications["clsNotary"] = arrayHolder;
         BatchId.update({}, {$inc: {batchNumber: 1}});
-        console.log("end of function")
         resolve(clientObject);
 
     })

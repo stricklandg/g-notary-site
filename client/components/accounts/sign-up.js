@@ -34,10 +34,6 @@ const validate = values => {
         errors.password = 'Must be 5 characters or more'
     } else if (values.password.search(/[0-9]/) < 0) {
         errors.password = 'Your password must contain at least one number'
-    } else if (values.password.search(/(?:.*[^a-zA-Z0-9]){2}/g) < 0) {
-        errors.password = 'Your password must contain at least two symbol'
-    } else if (values.password.search(/[A-Z]/) < 0) {
-        errors.password = 'Your password requires at least one uppercase letter'
     }
 
     if(!values.repeatPassword) {

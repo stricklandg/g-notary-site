@@ -47,14 +47,6 @@ const validate = values => {
         errors.county = 'Required'
     }
 
-    var email_pattern = /^[^\s@]+@[^\s@.]+\.[^\s@]+$/;
-
-    if (!values.email) {
-        errors.email = 'Required'
-    } else if (email_pattern.test(values.email) == false) {
-        errors.email = 'Email is invalid'
-    }
-
     if (!values.driverlicense) {
         errors.driverlicense = 'Required'
     } else if (values.driverlicense.search(/(.*[0-9]){8}/i) < 0) {

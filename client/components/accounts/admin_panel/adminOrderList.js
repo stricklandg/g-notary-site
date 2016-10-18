@@ -3,18 +3,36 @@
  */
 import {Meteor} from 'meteor/meteor';
 import React, {Component} from 'react';
-import {Row, Col, ListGroup} from 'react-bootstrap';
+import {Row, Col, ListGroup, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import _ from 'lodash';
-import OverallStats from './overallStats';
 import {Link} from 'react-router';
 import signOutUser from '../../../events/actions/sign_out_user';
 import sosBatch from '../../../events/actions/sos_batch';
 import datesForReports from '../../../events/actions/dates_for_reports';
+import produceReport from './helpers/reportHelper';
+import DatesSelector from './containers/DateRangeContainer';
 
 class AdminOrderList extends Component {
-    //<div><button onClick={() => {sosBatch()}}>SOS batch</button></div>
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            displayTimeSelector: false,
+        };
+        this.displayTimeSelector = this.displayTimeSelectors.bind(this);
+    }
+
+    displayTimeSelectors(boolean) {
+        if (boolean == true) {
+            this.setState({displayTimeSelector: false})
+        } else {
+            this.setState({displayTimeSelector: true})
+        }
+    }
+
     render() {
+        console.log(this.state.displayTimeSelector)
        var {orders, signOutUser, sosBatch} = this.props;
         return (
             <div>
@@ -26,7 +44,30 @@ class AdminOrderList extends Component {
                     </Col>
                 </div>
                 <div className="container">
-                    <OverallStats handleDates={this.props.datesForReports}/>
+                    <Row>
+                        <Col xs={2} md={2} lg={2}>
+                            <span style={{float:'left'}}><h5>Orders</h5></span>
+                        </Col>
+                        <Col xs={4} md={4} lg={4}>
+                        </Col>
+                        <Col xs={2} md={2} lg={2}>
+                            <Button className="btn-default" onClick={() => Meteor.call("deleteFutureAddTempFuture")}>Do Not Push ME EVER!</Button>
+                        </Col>
+                        <Col xs={2} md={2} lg={2}>
+                            <Button className="btn-default" onClick={() => {this.displayTimeSelectors(this.state.displayTimeSelector)}} style={{float: 'right'}}>Sort by Date</Button>
+                        </Col>
+                        <Col xs={2} md={2} lg={2}>
+                            <Button className="btn-default" onClick={() => produceReport(orders)}>Produce Report</Button>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col xs={5} md={5} lg={5}>
+                        </Col>
+                        <Col xs={7} md={7} lg={7}>
+                            {this.state.displayTimeSelector == true ? <div className="form-spacer"><DatesSelector handleDates={this.props.datesForReports} /></div>: <div></div> }
+                        </Col>
+
+                    </Row>
                 </div>
                 <Col xs={12} lg={12}>
                     <ListGroup>
@@ -34,8 +75,17 @@ class AdminOrderList extends Component {
                                         orders.payload.map(value => {
                                             return (
                                                     <Link className="list-group-item" key={value._id} to={`/adminpanel/${value.orderNumber.orderNumber}`}>
-                                                    <b>Order Number: </b>
-                                                    {value.orderNumber.orderNumber}
+                                                      <div style={{"height": "22px"}}>
+                                                        <Col sm={6} md={6} lg={6}>
+                                                        <b>Order Number: </b>
+                                                        {value.orderNumber.orderNumber}
+                                                        </Col>
+
+                                                        <Col sm={6} md={6} lg={6}>
+                                                        <b> Customer Name: </b>
+                                                        {value.name}
+                                                        </Col>
+                                                      </div>
                                                     </Link>
                                                     )
                                                 })
