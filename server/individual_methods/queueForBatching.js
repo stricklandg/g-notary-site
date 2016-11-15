@@ -52,6 +52,11 @@ export default function filesForBatching(Collection) {
                 street2 = ""
             }
 
+            var suffixname = "";
+            if(_.has(bond, "suffixname")) {
+                suffixname = bond.suffixname;
+            }
+
             var street = bond.street + " " + street2;
 
             if (crimeStatus == "Y") {
@@ -140,7 +145,7 @@ export default function filesForBatching(Collection) {
                     "FirstName": bond.firstname,
                     "MiddleName": middlename,
                     "LastName": bond.lastname,
-                    "NameSuffix": "",
+                    "NameSuffix": suffixname,
                     "DateOfBirth": dFormatted,
                     "SocialSecurityNumber": bond.ss.replace(/-/g, ""),
                     "DriverLicenseState": "TX",

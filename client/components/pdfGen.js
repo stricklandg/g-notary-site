@@ -1,9 +1,18 @@
-import top_uri from './top_uri';
-import bot_uri from './bot_uri';
 
-import _ from 'lodash';
 
 export default function (signatureURI, data) {
+
+    /*
+
+
+  var street2 = "";
+  if (_.has(data, 'street2')) {
+    street2 = data.street2;
+  }
+
+  var street = data.street;
+  var streetToPrint = street.concat(" " + `${street2}`);
+
   //init pdf object as portrait 8.5x11 document with coordinate grid in inches
   var doc = new jsPDF("p","in", [8.5,11]);
 
@@ -32,7 +41,7 @@ export default function (signatureURI, data) {
   }
   doc.text(2.8, 2.740, data.firstName);
   doc.text(6.35, 2.740, data.socialsecurity);
-  doc.text(.543, 3.29, data.street);
+  doc.text(.543, 3.29, streetToPrint);
   doc.text(3.4, 3.29, data.city);
   doc.text(5.38, 3.29, data.zip);
   doc.text(6.37, 3.29, data.county.label);
@@ -76,5 +85,5 @@ export default function (signatureURI, data) {
   doc.addImage(signatureURI, 'PNG', 4.55, 9.81,3.4,0.4);
   //Open pdf in new window
   var blob = doc.output("blob");
-  return URL.createObjectURL(blob);
+  return URL.createObjectURL(blob); */
 }

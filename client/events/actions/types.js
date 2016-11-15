@@ -33,7 +33,7 @@ export const IS_ADMIN = 'IS_ADMIN';
 export const IS_NOT_ADMIN = 'IS_NOT_ADMIN';
 export const CHECK_IF_ADMIN = 'CHECK_IF_ADMIN';
 export const FORM_SIGNED = 'FORM_SIGNED';
-export const SELECTED_PACKAGE = 'SELECTED_PACKAGE';
+export const SELECT_PACKAGE = 'SELECT_PACKAGE';
 export const PAGE_FORWARD = 'PAGE_FORWARD';
 export const PAGE_BACK = 'PAGE_BACK';
 export const PAGE_RESET = 'PAGE_RESET';
@@ -58,3 +58,13 @@ export const SET_PAGE_LIMIT = 'SET_PAGE_LIMIT';
 export const SET_TIME_SORTER = 'SET_TIME_SORTER';
 export const RETURN_SORTERS = 'RETURN_SORTERS';
 export const REVEALED = 'REVEALED';
+
+export const CONVERT_FORM_TO_IMAGE = 'CONVERT_FORM_TO_IMAGE';
+export const ADD_IMAGE_TO_STATE = 'ADD_IMAGE_TO_STATE';
+export const REMOVE_IMAGE_FROM_STATE = 'REMOVE_IMAGE_FROM_STATE';
+export const ADD_BOND_NUM = 'ADD_BOND_NUM';
+
+export const TRIGGER_LOADER = 'TRIGGER_LOADER';
+export const STOP_LOADER = 'STOP_LOADER';
+export const PASS_CHANGED = 'PASS_CHANGED';
+export const PASS_CHANGED_RESET = 'PASS_CHANGED_RESET';

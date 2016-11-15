@@ -5,7 +5,6 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import ConnectedSignUpForm from './accounts/sign-up';
 import SignInForm from './accounts/sign-in';
-import Account from './accounts/account';
 import SuccessfulAccountCreation from './accounts/successfulAccountCreation';
 import SelectingWizardForm from './bond_form_ordering_process/orderWizard';
 import MainJumbo from './homepage_jumbotron';
@@ -19,9 +18,6 @@ import AddOrderContainer from './accounts/admin_panel/addOrderContainer';
 import AdminOrderListContainer from './accounts/admin_panel/adminOrderList';
 import ShopForOrderForm from './shop_ordering_process/shop';
 import ReviewBond from './bond_form_ordering_process/reviewBond';
-import BondOrderContainer from './accounts/bond_order';
-import OrderDetailsAdminContainer from './accounts/bond_order-admin';
-import AddSearchForm from './bond_form_ordering_process/helpers/GoogleAddressAutoFill';
 import SelectedOrderContainer from './accounts/admin_panel/containers/adminOrderSelectedContainer';
 import SuccessfulOrder from './shoppingCart/successfulOrder';
 
@@ -40,10 +36,12 @@ import authorizeRouteForCredit from './shoppingCart/container/require_authentica
 
 import SignHere from './bond_form_ordering_process/signhere';
 import ConfirmHere from './bond_form_ordering_process/confirm';
+import ResetForm from './accounts/reset';
 
 import authorizedRoute from './accounts/higher_order_component/require_authentication';
 
 import authorizeUserRoute from './accounts/higher_order_component/require_authentication_user';
+import ResetInProgress from './accounts/resetInProgress';
 
 
 import App from '../app';
@@ -84,6 +82,7 @@ export default (
 
         <Route path="signup" component={ConnectedSignUpForm} />
         <Route path="signin" component={SignInForm} />
+        <Route path="passreset" component={ResetForm} />
 
         <Route path="cart" component={CartWrapper}>
             <IndexRoute component={CartContainer}/>
@@ -108,7 +107,12 @@ export default (
             <Route path=":id" component={UserSelectedOrderContainer}/>
         </Route>
 
-        <Route path="search" component={AddSearchForm} />
+            <Route path="reset">
+                <Route path=":id" component={NewPasswordForm} />
+            </Route>
+
+            <Route path="resetinprogress" component={ResetInProgress} />
+
         <Route path="*" />
 
     </Route>

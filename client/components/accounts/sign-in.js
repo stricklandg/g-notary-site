@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import {reduxForm, Field } from 'redux-form';
 import signInUser from '../../events/actions/sign_in_user';
 import {FormGroup, Col, Row, Form, Button, FormControl, Alert} from 'react-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
 
 const renderInput = ({ input, label, type, className, placeholder, meta: { touched, error } }) =>
     <div>
@@ -34,13 +35,14 @@ class SignIn extends Component {
                 <h2>Sign In</h2>
                         </div>
                     </Col>
-                    <Col xs={1} sm={7} md={7} lg={8} />
+                    <Col xs={1} sm={7} md={7} lg={8}>
+                    </Col>
                 </Row>
 
 
                 <Row>
                     <Col xs={1} />
-                    <Col xs={10} sm={4} md={4} lg={3}>
+                    <Col xs={10} sm={5} md={5} lg={5}>
                 <FormGroup>
                     <label>Username</label>
                     <Field name="username" className="form-control" component={renderInput} type="text" />
@@ -51,7 +53,7 @@ class SignIn extends Component {
 
                 <Row>
                     <Col xs={1} />
-                    <Col xs={10} sm={4} md={4} lg={3}>
+                    <Col xs={10} sm={5} md={5} lg={5}>
                 <FormGroup className="form-group">
                     <label>Password</label>
                     <Field name="password" className="form-control" component={renderInput} type="password" />
@@ -62,10 +64,14 @@ class SignIn extends Component {
 
                 <Row>
                     <Col xs={1} />
-                    <Col xs={10} sm={4} md={4} lg={3}>
+                    <Col xs={5} sm={3} md={2} lg={3}>
                 <Button type="submit" className="btn btn-primary">Submit</Button>
                     </Col>
-                    <Col xs={1} sm={7} md={7} lg={8} />
+                    <Col xs={5} sm={5} md={5} lg={4}>
+                        <LinkContainer to="passreset">
+                            <Button className="btn btn-primary">Forgot Password?</Button>
+                        </LinkContainer>
+                    </Col>
                 </Row>
 
             </Form>

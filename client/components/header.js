@@ -18,16 +18,19 @@ class Header extends Component {
         if (this.props.signedIn) {
             var accountsArray = [];
 
+            const storeLink = <NavItem eventKey={10} key={10}><LinkContainer to="/shop/supplies/"><h4>STORE</h4></LinkContainer></NavItem>;
+            accountsArray.push(storeLink);
+
         //Definitely ensure the user's account section is displayed, if user is signed in
         const userAccountLink = <NavItem eventKey={4} key={4}>
-                <LinkContainer to="/userpanel"><div>Account</div></LinkContainer>
+                <LinkContainer to="/userpanel"><h4>ACCOUNT</h4></LinkContainer>
                                 </NavItem>;
         accountsArray.push(userAccountLink);
 
         //If the user is also an admin, allow them to see the the admin panel in the navbar
         if (this.props.administrator) {
             const adminAccountLink = <NavItem eventKey={3} key={3}>
-                <LinkContainer to="/adminpanel"><div>Admin</div></LinkContainer>
+                <LinkContainer to="/adminpanel"><h4>ADMIN</h4></LinkContainer>
             </NavItem>;
             accountsArray.push(adminAccountLink);
         }
@@ -36,11 +39,14 @@ class Header extends Component {
 
         } else {
             return [
+                <NavItem eventKey={10} key={10}>
+                    <LinkContainer to="/shop/supplies/"><h4>STORE</h4></LinkContainer>
+                </NavItem>,
                 <NavItem eventKey={1} key={1}>
-                        <LinkContainer to="/signup"><NavItem>Sign Up</NavItem></LinkContainer>
+                        <LinkContainer to="/signup"><h4>SIGN UP</h4></LinkContainer>
                 </NavItem>,
                 <NavItem eventKey={2} key={2}>
-                    <LinkContainer to="/signin"><div>Sign In</div></LinkContainer>
+                    <LinkContainer to="/signin"><h4>SIGN IN</h4></LinkContainer>
                 </NavItem>
                     ]
         }
@@ -64,8 +70,8 @@ class Header extends Component {
                             {this.renderLinks()}
                         </Nav>
                         <Nav pullRight>
-                            <NavItem href="mailto:notary@iiubonds.com">Email</NavItem>
-                            <Navbar.Text>800-933-7444</Navbar.Text>
+                            <NavItem href="mailto:notary@iiubonds.com"><h4>EMAIL</h4></NavItem>
+                            <NavItem><LinkContainer to="/ordersuccess"><h4>800-933-7444</h4></LinkContainer></NavItem>
                             <NavItem>
                                 <LinkContainer to="/cart"><div><ShoppingCartBadge totalQuantity={totalQuantity} /></div></LinkContainer>
                             </NavItem>

@@ -25,6 +25,10 @@ import notaryTypeReducer from './reducer_slices/notary_type_reducer';
 import grabSorters from './reducer_slices/admin_order_sorters_reducer';
 import checkOutItemsReducer from './reducer_slices/checkout_items';
 import revealReducer from './reducer_slices/revealed_reducer';
+import imageToStateReducer from './reducer_slices/image_to_state_reducer';
+import loadingTriggerReducer from './reducer_slices/loading_reducer';
+import packageTypeReducer from './reducer_slices/package_type_reducer';
+import passwordResetReducer from './reducer_slices/password_changed_reducer';
 
 import{ reducer as formReducer } from 'redux-form';
 
@@ -38,6 +42,7 @@ const topLevelReducers = combineReducers({
     profile: profileReducer,
     userError: userErrorReducer,
     packages: packagesReducer,
+    packageType: packageTypeReducer,
     storeSelection: storeSelectionReducer,
     signedIn: userSignInReducer,
     signUpError: signUpErrorReducer,
@@ -52,6 +57,9 @@ const topLevelReducers = combineReducers({
     notaryType: notaryTypeReducer,
     adminPageSorters: grabSorters,
     revealSelection: revealReducer,
+    uploadedBondImage: imageToStateReducer,
+    loadingTrigger: loadingTriggerReducer,
+    passwordReset: passwordResetReducer,
     infoForTempBond: infoForTempBondReducer
 });
 

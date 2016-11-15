@@ -45,7 +45,7 @@ class NavigationForStore extends Component {
 
 function mapStateToProps(state) {
     return {
-        selectedPackage: state.form.orderwizard.values.packageChosen.packageType,
+        selectedPackage: state.packageType.type,
     }
 }
 

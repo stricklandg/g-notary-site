@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import Dropzone from 'react-dropzone';
 import {Meteor} from 'meteor/meteor';
 import { connect } from 'react-redux';
-import {passPdf} from '../../../../events/actions/form_signed';
+import addUpImageToState from '../../../../events/actions/add_up_image_to_state';
 
 class ImageDropFormCom extends Component {
     constructor (props) {
@@ -24,8 +24,11 @@ class ImageDropFormCom extends Component {
         this.handleImageUpload(files[0], function(dataURI) {
 
             var image = Meteor.callPromise('processUploadedImage', dataURI);
-            image.then((imageFinal) =>
-                func(imageFinal));
+            image.then((imageFinal) => {
+                //image is being skrunk by the console, it should be correct!
+                //func needs to a method passing this base64 image to state for later recall in the signature comp on submit function
+                func(imageFinal)
+            });
 
         });
     }
@@ -39,7 +42,7 @@ class ImageDropFormCom extends Component {
 
             canvas.getContext('2d').drawImage(this, 0, 0);
 
-            callback(canvas.toDataURL('image/png'));
+            callback(canvas.toDataURL("image/jpeg"));
         };
         image.src = file.preview;
 
@@ -48,7 +51,7 @@ class ImageDropFormCom extends Component {
     render() {
         return (
             <div>
-                <Dropzone multiple={false} accept="image/*" onDrop={(value) => this.onImageDrop(value, this.props.passPdf)}><p>Drop an image or click to select a file to upload.</p></Dropzone>
+                <Dropzone multiple={false} accept="image/*" onDrop={(value) => this.onImageDrop(value, this.props.addUpImageToState)}><p>Drop an image or click to select a file to upload.</p></Dropzone>
                 {this.state.uploadedFile === '' ? null : <div><img ref="uploadedImage" src={this.state.uploadedFile.preview} style={{width: 500}} /><p>{this.state.uploadedFile.name}</p></div>}
             </div>
         )
@@ -56,7 +59,7 @@ class ImageDropFormCom extends Component {
 }
 
 
-export default ImageDropForm = connect(null, {passPdf})(ImageDropFormCom);
+export default ImageDropForm = connect(null, {addUpImageToState})(ImageDropFormCom);
 
 
 /*

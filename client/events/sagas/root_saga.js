@@ -19,6 +19,7 @@ import watchProcessCreditCard from './process_credit_card_saga';
 import watchAddImageToDB from './add_image_to_db_saga';
 import watchSOSBatchSaga from './sos_batch_saga';
 import watchPackageOrBondToRemoveFromCart from './remove_package_from_cart_sage';
+import watchAddBondNumToDB from './add_bond_number_to_db_saga';
 
 
 export default function* rootSaga() {
@@ -41,6 +42,7 @@ export default function* rootSaga() {
         watchProcessCreditCard(),
         watchAddImageToDB(),
         watchSOSBatchSaga(),
+        watchAddBondNumToDB(),
         addDBObserveeSaga()
     ]
 }

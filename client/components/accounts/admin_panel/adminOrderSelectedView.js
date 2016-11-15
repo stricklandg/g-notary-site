@@ -5,19 +5,32 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Panel, Label, Col, Row } from 'react-bootstrap';
 import extraInfoSwitch  from './helpers/extraInfoSwitcher';
+import findBondInfo from './helpers/findBondInfo';
 var moment = require('moment');
 import AccountHeader from '../account_header';
 import _ from 'lodash';
-
+import AddNumWrapper from './helpers/addBondNumberWrapper';
+var console = window.console || { log: function() {} };
 //Account is an authorized route, meaning it cannot be accessed unless the user is logged in.
-
-function quantityById () {
-
-}
 
 class AdminOrderSelectedView extends Component {
 
+    constructor(props, context) {
+        super(props, context);
+
+
+        this.handleClick = this.handleClick.bind(this);
+
+
+        this.state = { show: false };
+    }
+
+    handleClick(e) {
+        this.setState({ target: e.target, show: !this.state.show });
+    }
+
     render() {
+
         let date = this.props.order.time.ourtime;
         let {order} = this.props;
         return(
@@ -80,6 +93,7 @@ class AdminOrderSelectedView extends Component {
                                         <div className="panel-body">
                                             <p>{order.address.name}</p>
                                             <p>{order.address.street}</p>
+                                            {_.has(order, "address.street2") ? <p>{order.address.street2}</p> : <div></div>}
                                             <p>{order.address.city}, {order.address.state} {order.address.zip}</p>
                                         </div>
                                 </div>
@@ -110,11 +124,18 @@ class AdminOrderSelectedView extends Component {
                                 </h5>
                                 <div className="panel-body">
                                     <ul>
-                                        {order.products.map(value => value.map(value => { return <div>
-                                            <Col xs={8} md={8} lg={8}><h4>{value.name}</h4><b>Quantity: </b>{value.quantity}</Col>
+                                        {order.products.map(value => value.map((value, index) => {
+                                            const bond = findBondInfo(value);
+                                            return <Panel key={index} header={<Row>
+                                            <Col xs={8} md={8} lg={8}><h4>{value.name}</h4></Col>
                                             <Col xs={4} md={4} lg={4}><h4><Label>{value.price}</Label></h4></Col>
+                                            {_.isObject(bond) ? <Col xs={12} md={12} lg={12}>
+                                                <AddNumWrapper bondId={bond} orderNum={order.orderNumber.orderNumber} index={index}/>
+                                            </Col> : <div></div>}
+                                        </Row>}>
                                             <Row>
                                                 <Col xs={8}>
+                                                    <b>Quantity: </b>{value.quantity}
                                             <p className="text-indent"><b><i>Details :</i></b></p>
                                             {_.toPairs(extraInfoSwitch(value)).map((value, index) => {
                                                     if (_.isObject(value[1])) {
@@ -137,7 +158,7 @@ class AdminOrderSelectedView extends Component {
                                             }
                                                 </Col>
                                             </Row>
-                                        </div> }))}
+                                        </Panel> }))}
                                     </ul>
                                 </div>
                             </div>
@@ -157,3 +178,21 @@ class AdminOrderSelectedView extends Component {
 
 var AdminOrderSelectedViewContainer = connect(null, null)(AdminOrderSelectedView);
 export default AdminOrderSelectedViewContainer;
+
+/*
+ {_.isObject(bond) ? <Col xs={2} md={2} lg={2}>
+ <ButtonToolbar>
+ <Button bsStyle="info" onClick={event => this.handleClick(event)}>Add Bond #</Button>
+
+ <Overlay show={this.state.show}
+ target={this.state.target}
+ placement="bottom"
+ container={this}
+ containerPadding={20}>
+ <Popover id="popover-bottom" title="Add Bond Number">
+ <ConnectedAddBondNumForm bondId={value}/>
+ </Popover>
+ </Overlay>
+ </ButtonToolbar>
+ </Col> : <div></div>}
+ */

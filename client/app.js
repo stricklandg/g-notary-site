@@ -30,14 +30,12 @@ class Base extends Component {
 
     render() {
         return (
-            <div className="contains-it-all">
-                <div classID="OutBox">
-                    <div className="paddtron">
+
+                    <div>
                     <Header />
                     {this.props.children}
                     </div>
-                </div>
-            </div>
+
         );
     }
 }

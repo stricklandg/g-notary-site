@@ -8,12 +8,7 @@ import {Form, Col, FormGroup, Clearfix, ListGroup, ListGroupItem} from 'react-bo
 import { connect } from 'react-redux';
 import { Select } from 'react-select';
 import normalizePhone from '../bond_form_ordering_process/validators/normalizePhone';
-
-
-import _ from 'lodash';
 import { addressToLoad, clearAddressList } from '../../events/actions/fetch_address_autocomplete';
-import AddSearchForm from '../bond_form_ordering_process/helpers/GoogleAddressAutoFill';
-
 import renderInput from '../RenderField';
 
 const validate = values => {

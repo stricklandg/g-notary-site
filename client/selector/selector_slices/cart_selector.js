@@ -70,6 +70,18 @@ function getTax(inventoryItem) {
         case "Bond Only":
             valueToReturn = "0.00";
             break;
+        case "Coverage $10,000":
+            valueToReturn = "0.00";
+            break;
+        case "Coverage $15,000":
+            valueToReturn = "0.00";
+            break;
+        case "Coverage $25,000":
+            valueToReturn = "0.00";
+            break;
+        case "Coverage $5,000":
+            valueToReturn = "0.00";
+            break;
         default:
             valueToReturn = inventoryItem.price*.0825;
         break;

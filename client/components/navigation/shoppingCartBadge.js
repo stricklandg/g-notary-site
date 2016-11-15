@@ -9,7 +9,7 @@ class ShoppingCartBadge extends Component {
     render() {
         const { totalQuantity } = this.props;
         return (
-            <p>Shopping Cart <span className="badge">{totalQuantity}</span></p>
+            <h4>MY CART <span className="badge">{totalQuantity}</span></h4>
         )
     }
 }

@@ -32,7 +32,6 @@ class AdminOrderList extends Component {
     }
 
     render() {
-        console.log(this.state.displayTimeSelector)
        var {orders, signOutUser, sosBatch} = this.props;
         return (
             <div>

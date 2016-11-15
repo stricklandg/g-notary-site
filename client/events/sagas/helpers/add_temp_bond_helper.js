@@ -3,8 +3,8 @@
  */
 import { Meteor } from 'meteor/meteor';
 
-export default function addTempBond(data, sessionId, image) {
-    var newStuff = Meteor.callPromise('writeToTempDB', data, sessionId, image);
+export default function addTempBond(data, sessionId) {
+    var newStuff = Meteor.callPromise('writeToTempDB', data, sessionId);
     return newStuff.then(results => {
         return results;
     })

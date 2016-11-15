@@ -5,7 +5,7 @@ import {ADD_IMAGE_TO_DB} from '../actions/types';
 import { takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
 import addImageToDB from './helpers/add_image_to_db_helper';
-
+var console = window.console || { log: function() {} };
 
 function* addImageToDBSaga(action) {
     const results = yield call(addImageToDB, action.payload);

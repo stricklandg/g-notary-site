@@ -11,9 +11,9 @@ export function addPackageWizardData(data) {
 }
 
 
-export function addOrderWizardData(data, id, reveal) {
+export function addOrderWizardData(data, id, revealSig) {
     var formUploaded = null;
-    if (reveal == true) {
+    if (revealSig == true) {
         formUploaded = false
     } else {
         formUploaded = true

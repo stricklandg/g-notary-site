@@ -3,16 +3,12 @@
  */
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
-import { change } from 'redux-form/lib/actions';
 import {Form, Col, FormGroup, Clearfix, ListGroup, ListGroupItem} from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Select } from 'react-select';
 
 import renderSelectedInput from '../RenderSearchableField';
-import _ from 'lodash';
-import { addressToLoad, clearAddressList } from '../../events/actions/fetch_address_autocomplete';
 import normalizeDL from './validators/normalizeDL';
-import AddSearchForm from './helpers/GoogleAddressAutoFill';
 import newCArray from '../../listOfCounties';
 
 import renderInput from '../RenderField';
@@ -21,7 +17,7 @@ const validate = values => {
     const errors = {};
     if (!values.street) {
         errors.street = 'Required'
-    } else if (values.street.search(/(.*[a-z]){2}/i) < 0) {
+    } else if (values.street.search(/(.*[a-z]){1}/i) < 0) {
         errors.street = 'Must include at least 1 alphabetical character'
     }
 
@@ -61,38 +57,10 @@ const validate = values => {
     return errors
 };
 
-const addArrayForum = (addSearch, changer, dispatcher, clearList) => {
-    addArray = _.values(addSearch);
-    var fieldArray = ['street', 'city', 'state', 'zip'];
-   return addArray.map(values => {
-       //Refactor soon
-       var termGroup = _.cloneDeep(values.terms);
-       var valueOne = termGroup[0].value;
-       var valueTwo = termGroup[1].value;
-       var stringCombo = valueOne + " " + valueTwo;
-       termGroup[0] = {value: stringCombo};
-       termGroup.splice(1, 1);
-       termGroup.splice(3, 1);
-       values.terms = termGroup;
-        return <ListGroupItem key={values.id} onClick={() => { values.terms.forEach((value, index) => dispatcher(changer(fieldArray[index], value.value))); dispatcher(change('orderaddsearch', 'addsearch', values.description)); clearList(); }}>{values.description}</ListGroupItem>
-        }
-    )
-};
-
 const OrderFormSecondPage = (props) => {
-    const { handleSubmit, previousPage, addSearch, change, dispatch, clearAddressList} = props;
+    const { handleSubmit, previousPage} = props;
     return (
         <Form onSubmit={handleSubmit}>
-
-            <FormGroup>
-                        <AddSearchForm/>
-                {_.isEmpty(addSearch) ? <div></div> :
-                    <FormGroup>
-                        <Col sm={10} smOffset={2} md={10} mdOffset={2}>
-                        <ListGroup>{addArrayForum(addSearch, change, dispatch, clearAddressList)}</ListGroup>
-                        </Col>
-                    </FormGroup>}
-            </FormGroup>
 
             <FormGroup>
                 <Clearfix visibleSmBlock/>
@@ -182,7 +150,4 @@ OrderFormPageTwo = reduxForm({
 //const selector = formValueSelector('orderaddsearch');
 
 
-export default connect(
-    state => ({
-            addSearch: state.addSearch
-        }), {addressToLoad, change, clearAddressList})(OrderFormPageTwo);
+export default connect(null, null)(OrderFormPageTwo);

@@ -3,13 +3,13 @@
  */
 import {ADD_TEMP_BOND} from './types';
 
-export function addTempBondToDB(data, sessionId, image) {
+export function addTempBondToDB(bondInfo, sessionId, addInfo) {
     return {
         type: ADD_TEMP_BOND,
         payload: {
-            data: data,
+            data: bondInfo,
             sessionId: sessionId,
-            image: image
+            addInfo: addInfo,
         }
     }
 }

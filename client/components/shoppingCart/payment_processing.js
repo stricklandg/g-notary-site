@@ -106,6 +106,7 @@ class CreditCardForm extends React.Component {
                 } else {
                 this.setState({noAddressField: true})
                 }
+
             } else {
             this.setState({noAddressField: true})
         }

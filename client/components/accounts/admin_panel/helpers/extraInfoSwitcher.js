@@ -99,6 +99,11 @@ export default function extraInfoSwitch(item) {
                     keyValue = key;
                 });
 
+                var bondNumber = "No Bond Number Yet";
+                if (_.has(item.extraInfo[keyValue], 'bondNumber')) {
+                    bondNumber = item.extraInfo[keyValue].bondNumber;
+                }
+
                 var birthday = item.extraInfo[keyValue].birthday;
                 var city = item.extraInfo[keyValue].city;
                 var county = item.extraInfo[keyValue].county.label;
@@ -129,10 +134,10 @@ export default function extraInfoSwitch(item) {
                 var telephone = item.extraInfo[keyValue].telephone;
                 var zip = item.extraInfo[keyValue].zip;
 
-                rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
+                rObject = {"Bond Number": bondNumber, "Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                     "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                     "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                    "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
+                    "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
                 };
 
             return objectInfo = rObject;
@@ -145,6 +150,11 @@ export default function extraInfoSwitch(item) {
                 keyValue = key;
             });
 
+            var bondNumber = "No Bond Number Yet";
+            if (_.has(item.extraInfo[keyValue], 'bondNumber')) {
+                bondNumber = item.extraInfo[keyValue].bondNumber;
+            }
+
             var birthday = item.extraInfo[keyValue].birthday;
             var city = item.extraInfo[keyValue].city;
             var county = item.extraInfo[keyValue].county.label;
@@ -175,10 +185,10 @@ export default function extraInfoSwitch(item) {
             var telephone = item.extraInfo[keyValue].telephone;
             var zip = item.extraInfo[keyValue].zip;
 
-            rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
+            rObject = {"Bond Number": bondNumber, "Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
             };
 
             return objectInfo = rObject;
@@ -191,6 +201,11 @@ export default function extraInfoSwitch(item) {
                 keyValue = key;
             });
 
+            var bondNumber = "No Bond Number Yet";
+            if (_.has(item.extraInfo[keyValue], 'bondNumber')) {
+                bondNumber = item.extraInfo[keyValue].bondNumber;
+            }
+
             var birthday = item.extraInfo[keyValue].birthday;
             var city = item.extraInfo[keyValue].city;
             var county = item.extraInfo[keyValue].county.label;
@@ -221,10 +236,10 @@ export default function extraInfoSwitch(item) {
             var telephone = item.extraInfo[keyValue].telephone;
             var zip = item.extraInfo[keyValue].zip;
 
-            rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
+            rObject = {"Bond Number": bondNumber, "Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
             };
 
             return objectInfo = rObject;
@@ -237,6 +252,11 @@ export default function extraInfoSwitch(item) {
                 keyValue = key;
             });
 
+            var bondNumber = "No Bond Number Yet";
+            if (_.has(item.extraInfo[keyValue], 'bondNumber')) {
+                bondNumber = item.extraInfo[keyValue].bondNumber;
+            }
+
             var birthday = item.extraInfo[keyValue].birthday;
             var city = item.extraInfo[keyValue].city;
             var county = item.extraInfo[keyValue].county.label;
@@ -267,10 +287,10 @@ export default function extraInfoSwitch(item) {
             var telephone = item.extraInfo[keyValue].telephone;
             var zip = item.extraInfo[keyValue].zip;
 
-            rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
+            rObject = {"Bond Number": bondNumber, "Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
             };
 
             return objectInfo = rObject;
@@ -283,6 +303,11 @@ export default function extraInfoSwitch(item) {
                 keyValue = key;
             });
 
+            var bondNumber = "No Bond Number Yet";
+            if (_.has(item.extraInfo[keyValue], 'bondNumber')) {
+                bondNumber = item.extraInfo[keyValue].bondNumber;
+            }
+
             var birthday = item.extraInfo[keyValue].birthday;
             var city = item.extraInfo[keyValue].city;
             var county = item.extraInfo[keyValue].county.label;
@@ -313,10 +338,10 @@ export default function extraInfoSwitch(item) {
             var telephone = item.extraInfo[keyValue].telephone;
             var zip = item.extraInfo[keyValue].zip;
 
-            rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
+            rObject = {"Bond Number": bondNumber, "Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip}
             };
 
             return objectInfo = rObject;

@@ -28,7 +28,7 @@ class ReviewBondComponent extends Component {
     }
 
     render() {
-        var {isAdmin, selection} = this.props;
+        var {isAdmin, selection, tempBondInfo, cart, orderForm, packageType} = this.props;
         var reveal = true;
 
             if (selection == "requireupload") {
@@ -64,7 +64,13 @@ class ReviewBondComponent extends Component {
                 </Col>
                 <Clearfix visibleLgBlock/>
                 <Col xs={12} lg={12}>
-        <SignHere reveal={reveal} previousPage={this.props.previousPage} nextPage={this.props.onSubmit}/>
+        <SignHere reveal={reveal}
+                  tempBondInfo={tempBondInfo}
+                  cart={cart}
+                  orderForm={orderForm}
+                  packageType={packageType}
+                  previousPage={this.props.previousPage}
+                  nextPage={this.props.onSubmit}/>
                 </Col>
             </Row>
         </Grid>
@@ -79,5 +85,8 @@ const ReviewBondForm = reduxForm({
 const selector = formValueSelector('reviewAdmin');
 
 export default ReviewBond = connect(state => ({
-    selection: selector(state, 'formupload')
+    selection: selector(state, 'formupload'),
+    cart: state.cart,
+    orderForm: state.form.orderwizard.values,
+    packageType: state.packageType.packageId,
 }), {revealSelection})(ReviewBondForm);

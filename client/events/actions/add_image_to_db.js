@@ -3,9 +3,9 @@
  */
 import {ADD_IMAGE_TO_DB} from './types';
 
-export default function addImageToDB(imageData, tempId) {
+export default function addImageToDB(imageData, tempBond) {
     return {
         type: ADD_IMAGE_TO_DB,
-            payload: { imageData, tempId }
+            payload: { imageData, tempBond }
     }
 }

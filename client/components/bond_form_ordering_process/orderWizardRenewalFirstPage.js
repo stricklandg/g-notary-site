@@ -19,9 +19,9 @@ const validate = values => {
         errors.renewaldate = 'Invalid Renewal Date, Please Try Again';
     }
 
-    if (moment(values.renewaldate).format('MM/DD/YYYY') < moment().add(90, 'd').format('MM/DD/YYYY')) {
+    /*if (moment(values.renewaldate).format('MM/DD/YYYY') > moment().add(3, 'months').format('MM/DD/YYYY') || moment(values.renewaldate).format('MM/DD/YYYY') < moment().add(3, 'months').format('MM/DD/YYYY')) {
         errors.renewaldate = "Notary renewal date must be within 90 days of expiration, also check that your date is a valid date."
-    }
+    } */
 
     return errors;
 }

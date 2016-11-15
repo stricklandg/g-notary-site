@@ -132,7 +132,7 @@ export default function extraInfoSwitch(item) {
             rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
                 "Renewal": {"Status": isRenewal},
                 "cRecord": {"cRecord": criminalRecord}
             };
@@ -180,7 +180,7 @@ export default function extraInfoSwitch(item) {
             rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
                 "Renewal": {"Status": isRenewal},
                 "cRecord": {"cRecord": criminalRecord}
             };
@@ -228,7 +228,7 @@ export default function extraInfoSwitch(item) {
             rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
                 "Renewal": {"Status": isRenewal},
                 "cRecord": {"cRecord": criminalRecord}
             };
@@ -276,7 +276,7 @@ export default function extraInfoSwitch(item) {
             rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
                 "Renewal": {"Current Notary Status": isRenewal},
                 "cRecord": {"Criminal History": criminalRecord}
             };
@@ -324,7 +324,7 @@ export default function extraInfoSwitch(item) {
             rObject = {"Name": {"First Name": firstName, "Last Name": lastName}, "Email": email, "Telephone": telephone,
                 "Driver's License": {"License Number": driverlicense, "Issuing State": issuingState},
                 "Birthday": birthday, "Social Security": `****-**-${socialSecurity.substring(8, 11)}`,
-                "Address": {"Street": street, "Street Add": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
+                "Address": {"Street": street, "Street 2": street2, "City": city, "County": county, "State": state, "Zip Code": zip},
                 "Renewal": {"Status": isRenewal},
                 "cRecord": {"cRecord": criminalRecord}
             };
