@@ -30,6 +30,8 @@ import loadingTriggerReducer from './reducer_slices/loading_reducer';
 import packageTypeReducer from './reducer_slices/package_type_reducer';
 import passwordResetReducer from './reducer_slices/password_changed_reducer';
 
+import ticketReducer from './reducer_slices/ticket_reducer';
+
 import{ reducer as formReducer } from 'redux-form';
 
 const topLevelReducers = combineReducers({
@@ -60,7 +62,8 @@ const topLevelReducers = combineReducers({
     uploadedBondImage: imageToStateReducer,
     loadingTrigger: loadingTriggerReducer,
     passwordReset: passwordResetReducer,
-    infoForTempBond: infoForTempBondReducer
+    infoForTempBond: infoForTempBondReducer,
+    tickets: ticketReducer
 });
 
 const rootReducer = (state,action) => {

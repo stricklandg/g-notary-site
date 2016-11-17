@@ -32,10 +32,11 @@ import checkUserAccount from './individual_methods/check_user_accounts';
 import chargeCC from './individual_methods/cc_processing_callout';
 
 var Promise = require("bluebird");
-
+import axios from 'axios';
 var moment = require('moment-timezone');
 var Jimp = require('jimp');
 
+const PATH = "/api/v2/tickets/";
 Accounts.config({
     forbidClientAccountCreation: true
 });
@@ -561,7 +562,18 @@ Meteor.methods ({
                     })
                 })
             });
-    }
+    },
+    //DEPRECATED
+  fetchTickets: function(ordernumber){
+    return Meteor.http.call("GET", "https://valuesure.freshdesk.com" + PATH,
+    {
+      auth: 'gINcauzYJFnVZr6Gp5:X'
+    });
+
+
+
+
+}
 
 
 });

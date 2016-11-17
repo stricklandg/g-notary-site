@@ -10,6 +10,7 @@ var moment = require('moment');
 import AccountHeader from '../account_header';
 import _ from 'lodash';
 import AddNumWrapper from './helpers/addBondNumberWrapper';
+import {Meteor} from 'meteor/meteor';
 var console = window.console || { log: function() {} };
 //Account is an authorized route, meaning it cannot be accessed unless the user is logged in.
 
@@ -30,9 +31,10 @@ class AdminOrderSelectedView extends Component {
     }
 
     render() {
-
         let date = this.props.order.time.ourtime;
         let {order} = this.props;
+
+
         return(
             <div>
 
@@ -76,6 +78,7 @@ class AdminOrderSelectedView extends Component {
                     <div className="row">
                         <div className=".col-xs-12">
                             <span style={{float:'left'}}><h5>Order number: {order.orderNumber.orderNumber}</h5>
+
                             </span>
                             <span style={{float:'right'}}><h5>Date Ordered: {order.time.ourtime.toString()}</h5>
                             </span>

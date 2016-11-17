@@ -7,6 +7,9 @@ import {getSelectedOrderContents} from '../../../../selector/selector_slices/sel
 import AdminOrderSelectedViewContainer from '../adminOrderSelectedView';
 import _ from 'lodash';
 
+import TicketShow from '../ticket_show';
+
+import TicketNew from '../ticket_new';
 //params are accessible on this components props
 class SelectedStoreItem extends Component {
 
@@ -14,6 +17,7 @@ class SelectedStoreItem extends Component {
         let { selectedOrderItem, params } = this.props;
         return (
             <div>
+                <TicketShow {...this.props.params}/>
                 {!_.isEmpty(selectedOrderItem) ? <AdminOrderSelectedViewContainer order={selectedOrderItem}/> : <div> Select an item </div>}
             </div>
         )

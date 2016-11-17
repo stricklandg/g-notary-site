@@ -8,13 +8,14 @@ import createSagaMiddleware from 'redux-saga';
 
 import rootReducers from '../reducers/rootReducer';
 
+import promise from 'redux-promise';
 const logger = createLogger();
 const sagaMiddleware = createSagaMiddleware();
 
 export default () => {
 
     const store = createStore(rootReducers,
-        applyMiddleware(thunk, sagaMiddleware)
+        applyMiddleware(thunk, sagaMiddleware, promise)
     );
 
     return {
